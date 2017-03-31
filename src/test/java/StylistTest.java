@@ -51,4 +51,12 @@ public class StylistTest {
     newStylist.save();
     assertEquals(newStylist, Stylist.find(newStylist.getStylistId()));
   }
+
+  @Test
+  public void delete_deletesNewStylist() {
+    Stylist newStylist = new Stylist("Jack");
+    newStylist.save();
+    newStylist.delete();
+    assertEquals(null, Stylist.find(newStylist.getStylistId()));
+  }
 }
