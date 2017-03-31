@@ -30,9 +30,22 @@ public class StylistTest {
   }
 
   @Test
-  public void newStylist_getStylistName_Jack() {
+  public void newStylist_getStylistId() {
+    Stylist newStylist = new Stylist("Jack");
+    assertEquals(1, newStylist.getStylistId());
+  }
+
+  @Test
+  public void allStylists_containsNewStylist_Jack() {
     Stylist newStylist = new Stylist("Jack");
     newStylist.save();
-    assertEquals(true, );
+    assertEquals(true, Stylist.allStylists().contains(newStylist));
   }
+
+  // @Test
+  // public void find_retrievesNewStylist() {
+  //   Stylist newStylist = new Stylist("Jack");
+  //   newStylist.save();
+  //   assertEquals(newStylist, Stylist.find(newStylist.getStylistId));
+  // }
 }
