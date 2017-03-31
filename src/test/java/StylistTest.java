@@ -1,6 +1,8 @@
 import org.sql2o.*;
 import org.junit.*;
 import static org.junit.Assert.*;
+import java.util.List;
+
 
 public class StylistTest {
 
@@ -32,7 +34,8 @@ public class StylistTest {
   @Test
   public void newStylist_getStylistId() {
     Stylist newStylist = new Stylist("Jack");
-    assertEquals(1, newStylist.getStylistId());
+    newStylist.save();
+    assertTrue(newStylist.getStylistId() > 0);
   }
 
   @Test
@@ -42,10 +45,10 @@ public class StylistTest {
     assertEquals(true, Stylist.allStylists().contains(newStylist));
   }
 
-  // @Test
-  // public void find_retrievesNewStylist() {
-  //   Stylist newStylist = new Stylist("Jack");
-  //   newStylist.save();
-  //   assertEquals(newStylist, Stylist.find(newStylist.getStylistId));
-  // }
+  @Test
+  public void find_retrievesNewStylist() {
+    Stylist newStylist = new Stylist("Jack");
+    newStylist.save();
+    assertEquals(newStylist, Stylist.find(newStylist.getStylistId()));
+  }
 }
