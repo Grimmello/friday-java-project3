@@ -6,7 +6,7 @@ public class ClientTest {
 
   @Before
   public void setUp() {
-    DB.sql2o = new Sql2o("jdbc:postgresql://localhost:5432/hair_salon_test", null, null);
+    DB.sql2o = new Sql2o("jdbc:postgresql://localhost:5432/hair_salon", null, null);
   }
 
   @After
