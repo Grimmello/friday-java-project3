@@ -3,13 +3,13 @@
 <br>
 <h2>Add a client</h2>
 <hr>
-<form action="/client/new" method="post">
-  <label>Input client name</label>
-  <input type="text">
+<form action="/" method="post">
+  <label>Input full client name</label>
+  <input type="text" name="name">
   <label>Your Name</label>
   <select name="stylistName" required>
     #foreach($stylist in $stylists)
-      <option value="$stylist.getName">$client.getName</option>
+      <option value="$stylist.getStylistName()">$stylist.getStylistName()</option>
     #end
   </select>
   <button type="submit">Create a Client</button>
@@ -18,13 +18,12 @@
 <h1> View all clients </h1>
 
 <h3>Client List</h3>
-#foreach ($endangeredclient in $endangeredclients)
-  <a href="/client/$client.getClientId()">
+#foreach ($client in $clients)
+  <a href="/clients/$client.getClientId()">
     <h5>$client.getClientName()</h5>
-    <h5>$client.allClients().size() clients</h5>
     <p>Click for details</p>
   </a>
 #end
 <hr>
-<p>If you are a new stylist, please fill out the form <a href="/stylist-form.vtl">here.</a></p>
+<p>If you are a new stylist, please fill out the form <a href="/stylists/new">here.</a></p>
 <!--index.html-->

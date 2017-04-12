@@ -1,0 +1,12 @@
+<h1> Stylists </h1>
+
+<ul>
+  #foreach ($stylist in $stylists)
+    <li class="stylist">$stylist.getName()</li>
+    <ul>
+    #foreach ($client in $clients)
+      <li>$client.getClientName()</li>
+    #end
+    </ul>
+  #end
+</ul>
