@@ -4,9 +4,11 @@ import java.util.*;
 public class Client {
   private String clientName;
   private int id;
+  private int stylistId;
 
-  public Client(String name) {
+  public Client(String name,String stylistName) {
     this.clientName = name;
+    this.stylistId = (Stylist.find(stylistName).getStylistId());
   }
 
   public String getClientName() {
@@ -19,9 +21,10 @@ public class Client {
 
   public void save() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "INSERT INTO clients (clientName) VALUES (:clientName)";
+      String sql = "INSERT INTO clients (clientName, stylistid) VALUES (:clientName, :stylistid)";
       this.id = (int) con.createQuery(sql, true)
         .addParameter("clientName", this.clientName)
+        .addParameter("stylistid", this.stylistId)
         .executeUpdate()
         .getKey();
     }

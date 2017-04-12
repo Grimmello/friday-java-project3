@@ -49,14 +49,24 @@ public class StylistTest {
   public void find_retrievesNewStylist() {
     Stylist newStylist = new Stylist("Jack");
     newStylist.save();
-    assertEquals(newStylist, Stylist.find(newStylist.getStylistId()));
+    assertEquals(newStylist, Stylist.find(newStylist.getStylistName()));
   }
+
 
   @Test
   public void delete_deletesNewStylist() {
     Stylist newStylist = new Stylist("Jack");
     newStylist.save();
     newStylist.delete();
-    assertEquals(null, Stylist.find(newStylist.getStylistId()));
+    assertEquals(null, Stylist.find(newStylist.getStylistName()));
   }
+
+  // @Test
+  // public void getClient_returnsNewClient() {
+  //   Stylist newStylist = new Stylist("Jack");
+  //   Client newClient = new Client("Ross", "Jack");
+  //   newStylist.save();
+  //   newClient.save();
+  //   // assertEquals(newClient, newStylist)
+  //}
 }

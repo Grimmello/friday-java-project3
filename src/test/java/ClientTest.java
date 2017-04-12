@@ -19,34 +19,44 @@ public class ClientTest {
 
   @Test
   public void newClient_instanceOfClient_true() {
-    Client newClient = new Client("Richard");
+    Stylist newStylist = new Stylist("James");
+    newStylist.save();
+    Client newClient = new Client("Richard","James");
     assertEquals(true, newClient instanceof Client);
   }
 
   @Test
   public void getClientName_returnsClientName_Richard() {
-    Client newClient = new Client("Richard");
+    Stylist newStylist = new Stylist("James");
+    newStylist.save();
+    Client newClient = new Client("Richard","James");
     assertEquals("Richard", newClient.getClientName());
   }
 
   @Test
   public void getClientId_returnsClientId() {
-    Client newClient = new Client("Richard");
+    Stylist newStylist = new Stylist("James");
+    newStylist.save();
+    Client newClient = new Client("Richard","James");
     newClient.save();
     assertEquals(true,newClient.getClientId() > 0);
   }
 
   @Test
   public void allClients_returnsAllClients() {
-    Client newClient = new Client("Richard");
+    Stylist newStylist = new Stylist("James");
+    newStylist.save();
+    Client newClient = new Client("Richard","James");
     newClient.save();
     assertEquals(true, Client.allClients().contains(newClient));
   }
 
   @Test
   public void find_returnsNewClient1() {
-    Client newClient1 = new Client("Richard");
-    Client newClient2 = new Client("John");
+    Stylist newStylist = new Stylist("James");
+    newStylist.save();
+    Client newClient1 = new Client("Richard","James");
+    Client newClient2 = new Client("John", "James");
     newClient1.save();
     newClient2.save();
     assertEquals(newClient1, Client.find(newClient1.getClientId()));
@@ -54,7 +64,9 @@ public class ClientTest {
 
   @Test
   public void delete_deletesNewClient() {
-    Client newClient = new Client("Richard");
+    Stylist newStylist = new Stylist("James");
+    newStylist.save();
+    Client newClient = new Client("Richard","James");
     newClient.save();
     newClient.delete();
     assertEquals(null, Client.find(newClient.getClientId()));

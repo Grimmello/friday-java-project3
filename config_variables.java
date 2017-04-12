@@ -16,12 +16,10 @@ public class DB {
   public static void main(String[] args) {
     db();
   }
-
-
+  
   public static void db() {
     Properties prop = new Properties();
     InputStream input;
-
 
     try {
       String filename = "config.properties";

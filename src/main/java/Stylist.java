@@ -34,11 +34,11 @@ public class Stylist {
     }
   }
 
-  public static Stylist find(int id) {
+  public static Stylist find(String name) {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "SELECT * FROM stylists WHERE id=:id";
+      String sql = "SELECT * FROM stylists WHERE stylistName=:stylistName";
       Stylist stylist = con.createQuery(sql)
-      .addParameter("id", id)
+      .addParameter("stylistName", name)
       .executeAndFetchFirst(Stylist.class);
       return stylist;
     }
@@ -53,11 +53,11 @@ public class Stylist {
     }
   }
 
-  public List<Client> getClient() {
+  public List<Client> getClients() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "SELECT * FROM clients WHERE id=:id";
+      String sql = "SELECT * FROM clients WHERE stylistid=:stylistid";
       return con.createQuery(sql)
-        .addParameter("id", this.id)
+        .addParameter("stylistid", this.id)
         .executeAndFetch(Client.class);
     }
   }
