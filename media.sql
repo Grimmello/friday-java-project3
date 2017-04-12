@@ -40,11 +40,12 @@ SET default_with_oids = false;
 
 CREATE TABLE clients (
     id integer NOT NULL,
-    clientname character varying
+    clientname character varying,
+    stylistid integer
 );
 
 
-ALTER TABLE clients OWNER TO "clifford";
+ALTER TABLE clients OWNER TO clifford;
 
 --
 -- Name: clients_id_seq; Type: SEQUENCE; Schema: public; Owner: clifford
@@ -58,7 +59,7 @@ CREATE SEQUENCE clients_id_seq
     CACHE 1;
 
 
-ALTER TABLE clients_id_seq OWNER TO "clifford";
+ALTER TABLE clients_id_seq OWNER TO clifford;
 
 --
 -- Name: clients_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: clifford
@@ -77,7 +78,7 @@ CREATE TABLE stylists (
 );
 
 
-ALTER TABLE stylists OWNER TO "clifford";
+ALTER TABLE stylists OWNER TO clifford;
 
 --
 -- Name: stylists_id_seq; Type: SEQUENCE; Schema: public; Owner: clifford
@@ -91,7 +92,7 @@ CREATE SEQUENCE stylists_id_seq
     CACHE 1;
 
 
-ALTER TABLE stylists_id_seq OWNER TO "clifford";
+ALTER TABLE stylists_id_seq OWNER TO clifford;
 
 --
 -- Name: stylists_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: clifford
@@ -118,7 +119,7 @@ ALTER TABLE ONLY stylists ALTER COLUMN id SET DEFAULT nextval('stylists_id_seq':
 -- Data for Name: clients; Type: TABLE DATA; Schema: public; Owner: clifford
 --
 
-COPY clients (id, clientname) FROM stdin;
+COPY clients (id, clientname, stylistid) FROM stdin;
 \.
 
 
@@ -126,7 +127,7 @@ COPY clients (id, clientname) FROM stdin;
 -- Name: clients_id_seq; Type: SEQUENCE SET; Schema: public; Owner: clifford
 --
 
-SELECT pg_catalog.setval('clients_id_seq', 1, false);
+SELECT pg_catalog.setval('clients_id_seq', 29, true);
 
 
 --
@@ -134,6 +135,29 @@ SELECT pg_catalog.setval('clients_id_seq', 1, false);
 --
 
 COPY stylists (id, stylistname) FROM stdin;
+1	James
+2	James
+3	James
+4	James
+5	James
+6	James
+7	James
+8	James
+9	James
+10	James
+11	James
+12	James
+13	James
+14	James
+15	James
+16	James
+17	James
+18	James
+19	James
+20	James
+21	James
+22	James
+23	James
 \.
 
 
@@ -141,7 +165,7 @@ COPY stylists (id, stylistname) FROM stdin;
 -- Name: stylists_id_seq; Type: SEQUENCE SET; Schema: public; Owner: clifford
 --
 
-SELECT pg_catalog.setval('stylists_id_seq', 1, false);
+SELECT pg_catalog.setval('stylists_id_seq', 23, true);
 
 
 --
