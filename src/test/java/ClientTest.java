@@ -71,4 +71,16 @@ public class ClientTest {
     newClient.delete();
     assertEquals(null, Client.find(newClient.getClientId()));
   }
+
+  @Test
+  public void update_updatesClient_newStylist() {
+    Stylist oldStylist = new Stylist("James");
+    Stylist newStylist = new Stylist("Sam");
+    oldStylist.save();
+    newStylist.save();
+    Client newClient = new Client("Richard", "James");
+    newClient.save();
+    newClient.update(newStylist.getStylistId());
+    assertEquals(newStylist.getStylistId(), newClient.getStylistId());
+  }
 }

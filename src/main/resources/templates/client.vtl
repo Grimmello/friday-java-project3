@@ -1,4 +1,16 @@
 <h1>$client.getClientName()</h1>
 
 <h3>Stylist: $stylist.getStylistName()</h3>
+
+<form action="/clients/$client.getClientId()/update" method="post">
+  <select name="stylistName" required>
+    #foreach($individual in $stylists)
+      <option name="nameValue" value="$individual.getStylistName()">$individual.getStylistName()</option>
+    #end
+  </select>
+  <button class="submit">Update Client</button>
+</form>
+<form action="/clients/$client.getClientId()/delete" method="post">
+  <button class="submit">Delete Client</button>
+</form>
 <a href="/"> Go home</a>

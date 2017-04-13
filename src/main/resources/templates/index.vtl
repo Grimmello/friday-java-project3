@@ -15,15 +15,9 @@
   <button type="submit">Create a Client</button>
 </form>
 
-<h1> View all clients </h1>
-
-<h3>Client List</h3>
-#foreach ($client in $clients)
-  <a href="/clients/$client.getClientId()">
-    <h5>$client.getClientName()</h5>
-    <p>Click for details</p>
-  </a>
-#end
+<h1><a href="/clients"> View all clients</a></h1>
+<hr>
+<h1><a href="/stylists"> View all stylists</a></h1>
 <hr>
 <p>If you are a new stylist, please fill out the form <a href="/stylists/new">here.</a></p>
 <!--index.html-->

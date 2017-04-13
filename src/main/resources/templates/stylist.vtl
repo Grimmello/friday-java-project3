@@ -1,0 +1,10 @@
+<h1> $stylist.getStylistName()</h1>
+<ul>
+  #foreach($client in $clients)
+  <li><a href="/clients/$client.getClientId()">$client.getClientName()</a></li>
+  #end
+</ul>
+<form action="/stylists/$stylist.getStylistId()/delete" method="post">
+  <button class="submit">Delete Stylist</button>
+</form>
+<a href="/">Go home</a>

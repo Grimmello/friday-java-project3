@@ -61,12 +61,11 @@ public class StylistTest {
     assertEquals(null, Stylist.find(newStylist.getStylistName()));
   }
 
-  // @Test
-  // public void getClient_returnsNewClient() {
-  //   Stylist newStylist = new Stylist("Jack");
-  //   Client newClient = new Client("Ross", "Jack");
-  //   newStylist.save();
-  //   newClient.save();
-  //   // assertEquals(newClient, newStylist)
-  //}
+  @Test
+  public void update_updatesStylistName() {
+    Stylist newStylist = new Stylist("Jack");
+    newStylist.save();
+    newStylist.update("Roger");
+    assertEquals(newStylist.getStylistName(), "Roger");
+  }
 }

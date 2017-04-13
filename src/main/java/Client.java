@@ -68,6 +68,16 @@ public class Client {
       .executeAndFetch(Stylist.class);
     }
   }
+  public void update(int stylistid) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE clients SET stylistid=:stylistid WHERE id=:id;";
+      this.stylistId = stylistid;
+      con.createQuery(sql)
+        .addParameter("id", id)
+        .addParameter("stylistid", stylistid)
+        .executeUpdate();
+    }
+  }
 
   @Override
   public boolean equals(Object otherClient) {

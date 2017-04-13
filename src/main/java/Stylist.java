@@ -63,6 +63,17 @@ public class Stylist {
     }
   }
 
+  public void update(String stylistName) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE stylists SET stylistName=:stylistName WHERE id=:id;";
+      this.stylistName = stylistName;
+      con.createQuery(sql)
+        .addParameter("id", id)
+        .addParameter("stylistName", stylistName)
+        .executeUpdate();
+    }
+  }
+
   public List<Client> getClients() {
     try(Connection con = DB.sql2o.open()) {
       String sql = "SELECT * FROM clients WHERE stylistid=:stylistid";
@@ -71,7 +82,6 @@ public class Stylist {
         .executeAndFetch(Client.class);
     }
   }
-
 
   @Override
   public boolean equals(Object otherStylist) {
